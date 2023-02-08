@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center; /*在容器中央对齐弹性项目*/
+            align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            background-image:url("0.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .reg-box{
+            display: flex;
+            justify-content: center;  /*居中排列*/
+            align-content:space-around;
+            flex-wrap: wrap;  /*项目排在一条线上，换行，第一行在上方*/
+            width: 600px;
+            height: 500px;
+            background-color: rgba(0, 0, 0,.4);
+            border: 10px;
+            padding: 20px 50px;
+            border-radius: 20px;
+        }
+        .reg-box .input-box{
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-35px);
+        }
+        .reg-box h4{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            color: aliceblue;
+            font-size: 30px;
+        }
+        .reg-box  .input-box  .input-text{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .reg-box  .input-box  .input-text span{
+            color: aliceblue;
+            font-size: 18px;
+            margin-top: 20px;
+
+        }
+        .reg-box  .input-box  .input-text input{
+            border: 0;
+            padding: 6px;
+            border-bottom: 1px solid white;
+            background-color: #ffffff00;
+            color: #fff;
+            margin-top: 20px;
+        }
+        .reg-box  .input-box  .submit-btn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+            width: 145px;
+            height: 25px;
+            color: #fff;
+            background: linear-gradient(120deg,#a6c0fe 0%, #2E8B57 100%);
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .login-box  .input-box  {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            color: #fff;
+            font-size: 15px;
+
+        }
+        .signup{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            color: #fff;
+            font-size: 15px;
+        }
+        .login-box  .input-box  .signup a{
+            color: #fea6d6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body >
+        <div class = "reg-box">
+            <div class="input-box">
+                <h4>register</h4>
+                <div class="input-box">
+                    <div class="input-text">
+                        <span class="reg-reg"></span>
+                        <input type="text"  class="user-input"  id="username_signup"  maxlength="13" placeholder="用户名" name="username">
+                    </div>
+                    <div class="input-text">
+                        <span class="reg-z"></span>
+                        <input type="password"   class="pwd-input"  id="password"  maxlength="13" placeholder="密码" name="password">
+
+                    </div>
+                    <div class="input-text">
+                        <span class="reg-qm"></span>
+                        <input type="password"    class="pwd-input"   id="password1"  placeholder="确认密码" name="password0">
+                    </div>
+                    <div class="input-text">
+                        <span class="reg-xh"></span>
+                        <input type="text"  class="user-input" id = "question_signup" placeholder="密保问题" name="studentnum">
+                    </div>
+                    <div class="input-text">
+                        <span class="reg-xy"></span>
+                        <input type="text" id = "answer_signup"    maxlength="13" placeholder="密保答案" name="school">
+                    </div>
+
+                    <div class="input-text">
+                        <button class="submit-btn" onclick="signup()">提交</button>
+                    </div>
+                 <p class="register">
+                <span class="register-txt">
+                   如果已注册账户请点击
+                </span>
+                <span>
+                    <a href="./Log.html">登录</a>
+                </span>
+            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+        </div>
+
+    </div>
+</body>
+<script>
+        // 1.获取元素
+        var password = document.getElementById('password');
+        var eye = document.getElementById('eye');
+        var password1 = document.getElementById('password1');
+        var eye1 = document.getElementById('eye1');
+        var flag = 1;
+        // 2.注册事件 处理程序
+        eye.onclick = function () {
+        	// 应用flag 可以实现循环点击
+            if (flag === 0) {
+                // 点击一次后 flag 一定要变化
+                password.type = 'password';
+                // 修改 -图片路径
+                eye.src = "picture/no_eye.png";
+                // 同步双按钮
+                password1.type = 'password';
+                // 修改 -图片路径
+                eye1.src = "picture/no_eye.png";
+                flag = 1;//赋值操作
+            }
+            else{
+                password.type = 'text';
+                // 修改 -图片路径
+                eye.src = "picture/eye.png";
+                // 同步双按钮
+                password1.type = 'text';
+                // 修改 -图片路径
+                eye1.src = "picture/eye.png";
+                flag = 0;
+            }
+        }
+        eye.onmousedown=function(e){
+	        //现代浏览器阻止默认事件
+	        if ( e && e.preventDefault )
+	            e.preventDefault();
+	        //IE阻止默认事件
+	        else
+	            window.event.returnValue = false;
+	        return false;
+	        }
+        eye1.onclick = function () {
+        	if (flag === 0) {
+                // 点击一次后 flag 一定要变化
+                password.type = 'password';
+                // 修改 -图片路径
+                eye.src = "picture/no_eye.png";
+                // 同步双按钮
+                password1.type = 'password';
+                // 修改 -图片路径
+                eye1.src = "picture/no_eye.png";
+                flag = 1;//赋值操作
+            }
+            else{
+                password.type = 'text';
+                // 修改 -图片路径
+                eye.src = "picture/eye.png";
+                // 同步双按钮
+                password1.type = 'text';
+                // 修改 -图片路径
+                eye1.src = "picture/eye.png";
+                flag = 0;
+            }
+        }
+        eye1.onmousedown=function(e){
+	        //现代浏览器阻止默认事件
+	        if ( e && e.preventDefault )
+	            e.preventDefault();
+	        //IE阻止默认事件
+	        else
+	            window.event.returnValue = false;
+	        return false;
+	        }
+
+</script>
+<script src="JS/axios/dist/axios.min.js"></script>
+
+
+<script src="JS/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    /* 弹框  */
+    function show(cfg){
+        swal({
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+            // 解构cfg对象，展开cfg对象所有属性
+            ...cfg
+        })
+    }
+    function signup() {
+        const username = document.querySelector('input#username_signup').value
+        const password = document.querySelector('input#password').value
+        const password1 = document.querySelector('input#password1').value
+        const mibao_question = document.querySelector('input#question_signup').value
+        const mibao_answer = document.querySelector('input#answer_signup').value
+        if (!username){
+            show({
+                title: '错误',
+                text: '用户名不能为空',
+                icon: 'error',
+            })
+            return
+        }
+        if (!password | !password1){
+            show({
+                title: '错误',
+                text: '密码不能为空',
+                icon: 'error',
+            })
+            return
+        }
+        if (!mibao_question){
+            show({
+                title: '错误',
+                text: '密保问题不能为空',
+                icon: 'error',
+            })
+            return
+        }
+        if (!mibao_answer){
+            show({
+                title: '错误',
+                text: '密保答案不能为空',
+                icon: 'error',
+            })
+            return
+        }
+        if (password != password1){
+            show({
+                title: '错误',
+                text: '两次密码不同',
+                icon: 'error',
+            })
+            return
+        }
+        // 弹框提示，正在请求中
+        show({
+            title: '提示',
+            text: '正在注册...',
+            icon: 'info',
+            button: false
+        })
+        // 发送AJAX请求
+        axios.post('http://82.157.58.65:5000/signup', {
+            username,
+            password,
+            mibao_question,
+            mibao_answer
+        }).then(res => {
+            const ret = res.data
+            if (ret.code){ // 错误
+                show({
+                    title: '错误',
+                    text: ret.msg,
+                    icon: 'error',
+                    button: {
+                        text: '好的'
+                    }
+                })
+            }else { // 成功
+                show({
+                    title: '提示',
+                    text: ret.msg,
+                    icon: 'success',
+                    button: {
+                        text: '好的'
+                    }
+                })
+                console.log(ret.msg)
+                console.log(ret.msg.t_id)
+                const t_id = ret.msg.t_id.toString()
+                localStorage.setItem('t_id', t_id);
+                // 跳转聊天页面
+                window.location.href='chat.html';
+            }
+        }).catch(err => {
+            show({
+                title: '错误',
+                text: err.message,
+                icon: 'error',
+                button: {
+                    text: '好的'
+                }
+            })
+        })
+    }
+</script>
+ <script type="text/javascript">
+        $(function(){
+            resizewin();
+            window.οnresize=function(){resizewin()};
+            function resizewin() {
+                let designSize = 1920; // 设计图尺寸
+                let html = document.documentElement;
+                let wW = html.clientWidth;// 窗口宽度
+                let rem = wW * 100 / designSize;
+                document.getElementsByTagName("html")[0].style.fontSize = rem + 'px';
+            }
+
+            $("#tkgb").click(function () {
+                $('#tanchu').hide();
+            });
+            $(".tcbtn").click(function(){
+                $("#tanchu").show();
+            })
+
+
+            if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                $(".footer").css({"padding-bottom": "145px"});
+            }
+
+        });
+    </script>
+</html>
